@@ -20,6 +20,9 @@ RUN yum makecache
 # 下载依赖包
 RUN yum install -y gcc gcc-c++ autoconf libxml libxml2-devel libcurl libcurl-devel libpng libpng-devel freetype freetype-devel gd gd-devel libjpeg libjpeg-devel openssl libvpx libvpx-devel libmcrypt libmcrypt-devel ncurses ncurses-devel wget openssl openssl-devel pcre pcre-devel vim cmake bzip2
 
+# 移到文件到容器
+RUN wget http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz -O /usr/local/src/mysql-5.6.28.tar.gz
+
 # 解压文件
 RUN cd /usr/local/src/;tar zxf mysql-5.6.28.tar.gz
 
