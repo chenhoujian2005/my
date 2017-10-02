@@ -3,7 +3,7 @@ COPY sources.list /etc/apt/sources.list
 
 MAINTAINER chenjian <jianchen@alauda.io>
 
-ENV TOMCAT_VERSION 8.0.45
+ENV TOMCAT_VERSION 8.0.46
 
 # Set locales
 RUN locale-gen en_US.UTF-8
@@ -31,7 +31,7 @@ rm -rf /var/cache/oracle-jdk8-installer
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Get Tomcat
-RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
+RUN wget  --quiet --no-cookies   http://apache.rediris.es/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
 rm /tmp/tomcat.tgz && \
