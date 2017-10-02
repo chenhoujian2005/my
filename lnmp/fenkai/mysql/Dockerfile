@@ -8,7 +8,7 @@ MAINTAINER chenjian jianchen@alauda.io
 EXPOSE 3306
 
 # 移到文件到容器
-COPY ["soft/mysql-5.6.28.tar.gz", "/usr/local/src/"]
+#COPY ["soft/mysql-5.6.28.tar.gz", "/usr/local/src/"]
 
 # 操作yum源
 RUN yum install -y wget
