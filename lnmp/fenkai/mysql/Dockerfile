@@ -38,8 +38,8 @@ COPY ["./soft/mysql/my.cnf", "/etc/my.cnf"]
 COPY ["./soft/mysql/my.cnf.d/", "/etc/my.cnf.d/"]
 
 # 初始化mysql
-RUN /usr/local/mysql/scripts/mysql_install_db --basedir=/usr/local/mysql/ --datadir=/usr/local/www/data/mysql/data --defaults-extra-file=/etc/my.cnf --user=mysql --pid-file=/usr/local/www/data/mysql/data/mysql.pid
-RUN mkdir -p /var/log/mariadb/ && chown -R mysql:mysql /var/log/mariadb/
+#RUN /usr/local/mysql/scripts/mysql_install_db --basedir=/usr/local/mysql/ --datadir=/usr/local/www/data/mysql/data --defaults-extra-file=/etc/my.cnf --user=mysql --pid-file=/usr/local/www/data/mysql/data/mysql.pid
+#RUN mkdir -p /var/log/mariadb/ && chown -R mysql:mysql /var/log/mariadb/
 
 # 设置挂载
 VOLUME ["/usr/local/www"] 
