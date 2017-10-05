@@ -3,7 +3,7 @@ COPY sources.list /etc/apt/sources.list
 
 MAINTAINER chenjian <jianchen@alauda.io>
 
-ENV TOMCAT_VERSION 8.0.46
+ENV TOMCAT_VERSION 8.0.47
 
 # Set locales
 RUN locale-gen en_US.UTF-8

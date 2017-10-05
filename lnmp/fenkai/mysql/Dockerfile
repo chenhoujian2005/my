@@ -21,17 +21,17 @@ RUN yum makecache
 RUN yum install -y gcc gcc-c++ autoconf libxml libxml2-devel libcurl libcurl-devel libpng libpng-devel freetype freetype-devel gd gd-devel libjpeg libjpeg-devel openssl libvpx libvpx-devel libmcrypt libmcrypt-devel ncurses ncurses-devel wget openssl openssl-devel pcre pcre-devel vim cmake bzip2
 
 # 移到文件到容器
-RUN wget http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.28.tar.gz -O /usr/local/src/mysql-5.6.28.tar.gz
+RUN wget http://mirrors.sohu.com/mysql/MySQL-5.6/mysql-5.6.35.tar.gz -O /usr/local/src/mysql-5.6.35.tar.gz
 
 # 解压文件
-RUN cd /usr/local/src/;tar zxf mysql-5.6.28.tar.gz
+RUN cd /usr/local/src/;tar zxf mysql-5.6.35.tar.gz
 
 # 操作mysql
 RUN mkdir -p /usr/local/www/data/mysql/data
 RUN groupadd mysql
 RUN useradd -g mysql mysql
 RUN chown -R mysql:mysql /usr/local/www/data/mysql/data
-RUN cd /usr/local/src/mysql-5.6.28;cmake -DMYSQL_USER=mysql -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/www/data/mysql/data -DSYSCONFDIR=/etc -DMYSQL_USER=mysql -DMYSQL_UNIX_ADDR=/tmp/mysql/mysql.sock  -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci -DEXTRA_CHARSETS=all -DWITH_EMBEDDED_SERVER=1 -DENABLED_LOCAL_INFILE=1 -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DMYSQL_TCP_PORT=3306 -DWITH_SSL:STRING=bundled -DWITH_ZLIB:STRING=bundled && make && make install
+RUN cd /usr/local/src/mysql-5.6.35;cmake -DMYSQL_USER=mysql -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/www/data/mysql/data -DSYSCONFDIR=/etc -DMYSQL_USER=mysql -DMYSQL_UNIX_ADDR=/tmp/mysql/mysql.sock  -DDEFAULT_CHARSET=utf8  -DDEFAULT_COLLATION=utf8_general_ci -DEXTRA_CHARSETS=all -DWITH_EMBEDDED_SERVER=1 -DENABLED_LOCAL_INFILE=1 -DWITH_MYISAM_STORAGE_ENGINE=1 -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_MEMORY_STORAGE_ENGINE=1 -DWITH_READLINE=1 -DMYSQL_TCP_PORT=3306 -DWITH_SSL:STRING=bundled -DWITH_ZLIB:STRING=bundled && make && make install
 
 #操作mysql配置文件
 COPY ["./soft/mysql/my.cnf", "/etc/my.cnf"]
